@@ -44,7 +44,7 @@ const handleLogin = async () => {
 // Синхронизация корзины из базы данных с локальным состоянием
 async function syncBasketFromDatabase() {
   try {
-    const response = await fetch('http://127.0.0.1:5000/basket', {
+    const response = await fetch('https://flaskserver-98pw.onrender.com/basket', {
       headers: {
         Authorization: `Bearer ${auth.token}`,
       },

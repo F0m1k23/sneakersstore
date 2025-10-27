@@ -151,7 +151,7 @@ const fetchOrders = async () => {
       return
     }
 
-    const response = await axios.get('http://127.0.0.1:5000/orders', {
+    const response = await axios.get('https://flaskserver-98pw.onrender.com/orders', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

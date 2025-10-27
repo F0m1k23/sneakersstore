@@ -80,7 +80,7 @@ const handleOrderSubmit = async (formData) => {
       return
     }
 
-    const response = await axios.post('http://127.0.0.1:5000/orders', orderData, {
+    const response = await axios.post('https://flaskserver-98pw.onrender.com/orders', orderData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -36,7 +36,7 @@ export const useProductsStore = defineStore('products', () => {
    */
   const getProducts = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/catalog')
+      const response = await axios.get('https://flaskserver-98pw.onrender.com/catalog')
       products.value = response.data
       console.log('Загружено товаров:', response.data.length)
     } catch (error) {
@@ -50,7 +50,7 @@ export const useProductsStore = defineStore('products', () => {
    */
   const showProduct = async (id) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:5000/catalog/${id}`)
+      const response = await axios.get(`https://flaskserver-98pw.onrender.com/catalog/${id}`)
       product.value = response.data
       console.log('Загружен товар:', product.value)
     } catch (error) {
@@ -286,7 +286,7 @@ export const useProductsStore = defineStore('products', () => {
 
     try {
       // Очистка старой корзины в БД
-      await fetch('http://127.0.0.1:5000/basket', {
+      await fetch('https://flaskserver-98pw.onrender.com/basket', {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -295,7 +295,7 @@ export const useProductsStore = defineStore('products', () => {
 
       // Добавление всех товаров из текущей корзины
       for (const item of basket.value) {
-        await fetch('http://127.0.0.1:5000/basket', {
+        await fetch('https://flaskserver-98pw.onrender.com/basket', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

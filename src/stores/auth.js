@@ -53,7 +53,7 @@ export const useAuthStore = defineStore('auth', () => {
     isLoading.value = true
     try {
       // Отправка запроса на сервер для аутентификации
-      const response = await axios.post('http://127.0.0.1:5000/auth/login', {
+      const response = await axios.post('https://flaskserver-98pw.onrender.com/auth/login', {
         email,
         password,
       })
@@ -86,7 +86,10 @@ export const useAuthStore = defineStore('auth', () => {
     isLoading.value = true
     try {
       // Отправка данных для создания нового аккаунта
-      const response = await axios.post('http://127.0.0.1:5000/auth/register', userData)
+      const response = await axios.post(
+        'https://flaskserver-98pw.onrender.com/auth/register',
+        userData,
+      )
 
       // Автоматический вход пользователя после успешной регистрации
       token.value = response.data.access_token
@@ -124,7 +127,7 @@ export const useAuthStore = defineStore('auth', () => {
     if (token.value) {
       try {
         // Запрос данных профиля для проверки токена
-        const response = await axios.get('http://127.0.0.1:5000/auth/profile')
+        const response = await axios.get('https://flaskserver-98pw.onrender.com/auth/profile')
         user.value = response.data
         isAuthenticated.value = true
       } catch {
@@ -143,7 +146,10 @@ export const useAuthStore = defineStore('auth', () => {
     isLoading.value = true
     try {
       // Отправка обновленных данных профиля на сервер
-      const response = await axios.put('http://127.0.0.1:5000/auth/profile', profileData)
+      const response = await axios.put(
+        'https://flaskserver-98pw.onrender.com/auth/profile',
+        profileData,
+      )
       user.value = response.data.user // Обновление данных пользователя в store
       return { success: true, message: response.data.message }
     } catch (error) {
